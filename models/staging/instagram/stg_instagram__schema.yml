@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_instagram__media_history
+    description: Staging model for Instagram media history with cleaned and transformed data
+    columns:
+      - name: id
+        description: Unique identifier for the media post
+        tests:
+          - not_null
+      - name: user_id
+        description: Instagram user ID
+      - name: is_story
+        description: Indicates if the media is a story
+      - name: carousel_album_id
+        description: ID of the carousel album if the media is part of one
+      - name: media_type
+        description: Type of media (VIDEO, IMAGE, CAROUSEL_ALBUM)
+      - name: media_product_type
+        description: Instagram product type (REELS, FEED, etc.)
+      - name: created_time
+        description: Media creation time converted to WIB (UTC+7)
+
+  - name: stg_instagram__media_insights
+    description: Staging model for Instagram media insights with engagement metrics
+    columns:
+      - name: id
+        description: Unique identifier for the media post
+        tests:
+          - not_null
+      - name: like_count
+        description: Number of likes for regular posts
+      - name: reel_likes
+        description: Number of likes for reels
+      - name: comment_count
+        description: Number of comments for regular posts
+      - name: reel_comments
+        description: Number of comments for reels
+      - name: video_photo_saved
+        description: Number of saves for video/photo posts
+      - name: carousel_album_saved
+        description: Number of saves for carousel albums
+      - name: reel_saved
+        description: Number of saves for reels
+      - name: video_photo_shares
+        description: Number of shares for video/photo posts
+      - name: carousel_album_shares
+        description: Number of shares for carousel albums
+      - name: reel_shares
+        description: Number of shares for reels
+      - name: story_shares
+        description: Number of shares for stories

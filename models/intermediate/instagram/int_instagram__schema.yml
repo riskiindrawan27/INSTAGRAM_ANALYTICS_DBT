@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: int_instagram__media_engagement
+    description: Intermediate model combining media history with current and previous engagement metrics
+    columns:
+      - name: id
+        description: Unique identifier for the media post
+      - name: created_time
+        description: Media creation time in WIB
+      - name: user_id
+        description: Instagram user ID
+      - name: media_type
+        description: Type of media
+      - name: media_product_type
+        description: Instagram product type

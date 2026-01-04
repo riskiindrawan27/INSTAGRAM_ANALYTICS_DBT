@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: current_content_unengagement
+    description: |
+      Menghitung jumlah tindakan unlike, unsave, uncomment dan unshare per postingan.
+      Metric to calculate unengagements (unlike, unsave, uncomment, unshare) per post.
+    columns:
+      - name: id
+        description: Unique identifier konten yang telah dipublikasi
+        tests:
+          - not_null
+      - name: created_time
+        description: Waktu publikasi konten dalam WIB (UTC+7)
+        tests:
+          - not_null
+      - name: user_id
+        description: Unique identifier username Instagram
+        tests:
+          - not_null
+      - name: media_type
+        description: Tipe media yang diunggah di Instagram (VIDEO, IMAGE, CAROUSEL_ALBUM)
+      - name: media_product_type
+        description: Kategorisasi media_type dalam produk Instagram (REELS, FEED, STORY)
+      - name: unengagements
+        description: |
+          Jumlah unlike, unsave, uncomment dan unshares.
+          Calculated as the decrease in engagement metrics between time periods.
+        tests:
+          - not_null

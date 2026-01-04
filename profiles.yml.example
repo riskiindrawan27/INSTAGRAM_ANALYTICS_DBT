@@ -1,0 +1,15 @@
+# Example profiles.yml for Instagram Analytics dbt project
+# Copy this to ~/.dbt/profiles.yml (Mac/Linux) or %USERPROFILE%\.dbt\profiles.yml (Windows)
+
+instagram_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: instagram_analytics.duckdb
+      threads: 4
+      
+    prod:
+      type: duckdb
+      path: instagram_analytics_prod.duckdb
+      threads: 8
