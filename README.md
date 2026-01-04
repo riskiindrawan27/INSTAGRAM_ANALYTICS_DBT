@@ -42,9 +42,7 @@ Menghitung jumlah tindakan unlike, unsave, uncomment dan unshare per postingan I
 - `media_product_type`: Kategorisasi media_type dalam produk Instagram (REELS, FEED, STORY)
 - `unengagements`: Jumlah unlike, unsave, uncomment dan unshares
 
-## Data Model Architecture
-
-###Arsitektur Model Data
+## Arsitektur Model Data
 
 ### 1. Lapisan Staging
 **Tujuan:** Membersihkan dan menstandarisasi data mentah
@@ -71,7 +69,9 @@ Menghitung jumlah tindakan unlike, unsave, uncomment dan unshare per postingan I
 - **`current_content_unengagement`**: Perhitungan metrik akhir
   - Menghitung unengagement berdasarkan tipe media
   - Menangani pola engagement yang berbeda untuk konten REELS, FEED, dan STORY
-  - Menerasi & Pengaturan
+  - Menerapkan aturan bisnis untuk setiap tipe konten
+
+## Instalasi & Pengaturan
 
 ### Prasyarat
 - Python 3.8+
@@ -140,44 +140,6 @@ SELECT
 FROM current_content_unengagement
 GROUP BY media_type, media_product_type
 ORDER BY total_unengagements DESC;
-```
-
-## Logika Bisnis
-
-### Perhitungan Unengagement
-
-Metrik unengagement dihitung secara berbeda berdasarkan tipe konten:
-
-#### REELS
-```
-unengagements = 
-  (penurunan likes) + 
-  (penurunan saves) + 
-  (penurunan comments) + 
-  (penurunan shares)
-```
-
-#### CAROUSEL_ALBUM (FEED)
-```
-unengagements = 
-  (penurunan like_count) + 
-  (penurunan carousel_album_saved) + 
-  (penurunan comment_count) + 
-  (penurunan carousel_album_shares)
-```
-
-#### VIDEO/IMAGE (FEED)
-```
-unengagements = 
-  (penurunan like_count) + 
-  (penurunan video_photo_saved) + 
-  (penurunan comment_count) + 
-  (penurunan video_photo_shares)
-```
-
-#### STORY
-```
-unengagements = (penurunan story_shares)
 ```
 
 ## Tes Kualitas Data
